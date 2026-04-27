@@ -22,7 +22,7 @@ namespace EncapsulationOOP
             this._brand = "Mercedes";
             this._model = "S klass";
             this._seats = 5;
-            this._maxSpeed = 260;
+            this._maxSpeed = 200;
         }
         public Car(string brand, string model, int seats, int maxSpeed)
             :this()
@@ -30,8 +30,8 @@ namespace EncapsulationOOP
             this._brand = brand;
             this._model = model;
             if (seats > 0 && seats <= 7)
-                this._seats = seats;
-            if (maxSpeed > 0 && maxSpeed < 280)
+                this._seats = seats; 
+            if (maxSpeed > 0 && maxSpeed <= 260)
                 this._maxSpeed = maxSpeed;
         }
         public string Brand
