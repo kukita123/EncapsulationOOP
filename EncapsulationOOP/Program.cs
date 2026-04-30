@@ -30,15 +30,15 @@ namespace EncapsulationOOP
             //Console.WriteLine(t1.A);
             #endregion
             #region Car
-            Car car1 = new Car();
-            Car car2 = new Car("Kia", "Rio", 5, 180);
-            Car car3 = new Car("Fiat", "500e", 4, 160);
-            Car car4 = new Car("Porshe", "Cayen", 4, 260);
+            //Car car1 = new Car();
+            //Car car2 = new Car("Kia", "Rio", 5, 180);
+            //Car car3 = new Car("Fiat", "500e", 4, 160);
+            //Car car4 = new Car("Porshe", "Cayen", 4, 260);
 
-            CompareCars(car1, car3);
-            CompareCars(car2, car3);
-            car3.MaxSpeed = 181;
-            CompareCars(car2, car3);
+            //CompareCars(car1, car3);
+            //CompareCars(car2, car3);
+            //car3.MaxSpeed = 181;
+            //CompareCars(car2, car3);
 
             #endregion
             #endregion
@@ -59,20 +59,41 @@ namespace EncapsulationOOP
             //Console.WriteLine(t2.Perimeter());
             #endregion
             #region Car
-            //Car car1 = new Car();
-            //Car car2 = new Car("Fiat", "500e", 4, 180);
-            //Car car3 = new Car("BMW", "E46", 5, 266);
+            Car car1 = new Car();
+            Car car2 = new Car("Fiat", "500e", 4, 180);
+            Car car3 = new Car("BMW", "E46", 5, 266);
 
-            //if(car1.MaxSpeed > car2.MaxSpeed)
-            //    Console.WriteLine("Fastest car is {0} {1}", car1.Brand, car1.Model);
-            //else
-            //    Console.WriteLine("Fastest car is {0} {1}", car2.Brand, car2.Model);
+            if (car1.MaxSpeed > car2.MaxSpeed)
+                Console.WriteLine("Fastest car is {0} {1}", car1.Brand, car1.Model);
+            else
+                Console.WriteLine("Fastest car is {0} {1}", car2.Brand, car2.Model);
 
-            //if (car1.MaxSpeed > car3.MaxSpeed)
-            //    Console.WriteLine("Fastest car is {0} {1}", car1.Brand, car1.Model);
-            //else
-            //    Console.WriteLine("Fastest car is {0} {1}", car3.Brand, car3.Model);
+            if (car1.MaxSpeed > car3.MaxSpeed)
+                Console.WriteLine("Fastest car is {0} {1}", car1.Brand, car1.Model);
+            else
+                Console.WriteLine("Fastest car is {0} {1}", car3.Brand, car3.Model);
 
+            //objects array:
+            Car[] cars = new Car[5];
+            //constructor for every object in the array cars
+            for (int i = 0; i < cars.Length; i++)
+            {
+                cars[i] = new Car();
+            }
+            for (int i = 0; i < cars.Length; i++)
+            {
+                Console.Write("Enter Brand: ");
+                cars[i].Brand = Console.ReadLine();
+                Console.Write("Enter Model: ");
+                cars[i].Model = Console.ReadLine();
+                Console.Write("Enter Seats: ");
+                cars[i].Seats = int.Parse(Console.ReadLine());
+                Console.Write("Enter Max Speed: ");
+                cars[i].MaxSpeed = int.Parse(Console.ReadLine());
+
+            }
+            Console.WriteLine(cars[0].MaxSpeed);
+            Console.WriteLine(cars[3].MaxSpeed);
             #endregion
             #endregion
 
