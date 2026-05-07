@@ -75,37 +75,37 @@ namespace EncapsulationOOP
             //}
             #endregion
             #region Point
-            Point p1 = new Point();
-            Point p2 = new Point(2, 3);
-            Console.WriteLine(p1.DistanceToPoint(p2));
-            Console.WriteLine(p2.DistanceToPoint(p1));
-            Console.WriteLine(DistanceBetweenPoints(p1, p2));
+            //Point p1 = new Point();
+            //Point p2 = new Point(2, 3);
+            //Console.WriteLine(p1.DistanceToPoint(p2));
+            //Console.WriteLine(p2.DistanceToPoint(p1));
+            //Console.WriteLine(DistanceBetweenPoints(p1, p2));
 
-            Random r = new Random();
-            int n = r.Next(5, 10);
+            //Random r = new Random();
+            //int n = r.Next(5, 10);
 
-            Point[] points = new Point[n];
+            //Point[] points = new Point[n];
 
-            for (int i = 0; i < points.Length; i++)
-            {
-                points[i] = new Point(r.Next(-10, 10), r.Next(-10, 10));
-                Console.WriteLine("points[{0}] coordinates: ({1}, {2})", i, points[i].X, points[i].Y);
-            }
-            Console.WriteLine();
+            //for (int i = 0; i < points.Length; i++)
+            //{
+            //    points[i] = new Point(r.Next(-10, 10), r.Next(-10, 10));
+            //    Console.WriteLine("points[{0}] coordinates: ({1}, {2})", i, points[i].X, points[i].Y);
+            //}
+            //Console.WriteLine();
 
-            double min = DistanceBetweenPoints(points[0], points[1]);
-            for (int i = 0; i < points.Length - 1; i++)
-            {
-                for (int j = i + 1; j < points.Length; j++)
-                {
-                    double newDistance = DistanceBetweenPoints(points[i], points[j]);
-                    if (newDistance < min)
-                        min = newDistance;
-                }
-            }
-            Console.WriteLine("Min distance between points is: {0}", min);
+            //double min = DistanceBetweenPoints(points[0], points[1]);
+            //for (int i = 0; i < points.Length - 1; i++)
+            //{
+            //    for (int j = i + 1; j < points.Length; j++)
+            //    {
+            //        double newDistance = DistanceBetweenPoints(points[i], points[j]);
+            //        if (newDistance < min)
+            //            min = newDistance;
+            //    }
+            //}
+            //Console.WriteLine("Min distance between points is: {0}", min);
 
-            Console.WriteLine();
+            //Console.WriteLine();
             #endregion
             #endregion
             #region 9b
@@ -174,7 +174,31 @@ namespace EncapsulationOOP
             //}
             #endregion
             #region Point
-            //Point[] points = new Point[10];
+            Random r = new Random();
+            Point[] points = new Point[10];
+            for (int i = 0; i < points.Length; i++)
+            {
+                points[i] = new Point(r.Next(-20, 20) + r.NextDouble(), r.Next(-20, 20) + r.NextDouble());
+            }
+            for (int i = 0; i < points.Length; i++)
+            {
+                Console.WriteLine("points[{0}] coordinates: ({1}, {2})", i, Math.Round(points[i].X, 2), Math.Round(points[i].Y, 2));
+            }
+
+            double min = DistanceBetweenPoints(points[0], points[1]);
+            for (int i = 0; i < points.Length - 1; i++)
+            {
+                for (int j = i + 1; j < points.Length; j++)
+                {
+                    if (DistanceBetweenPoints(points[i], points[j]) < min)
+                        min = DistanceBetweenPoints(points[i], points[j]);
+                }
+            }
+            Console.WriteLine("Minimum distance: {0}", Math.Round(min, 2));
+            Point A = new Point(5, 4);
+            Point B = new Point(-3, 3);
+            Console.WriteLine(A.DistanceToPoint(B));
+            Console.WriteLine(B.DistanceToPoint(A));
 
             #endregion
             #endregion
