@@ -1,5 +1,14 @@
 ﻿using System;
-
+/*
+ * Да се създаде клас за ученици Student с полета за име,
+ * клас и среден успех на ученик. Да се създаде масив с поне 
+ * 10 ученици, да се създадат методи за зареждане на масива
+ * с данни, за намиране на учениците с най-висок и най-нисък успех
+ * и за подреждане на учениците по низходяш ред на успеха им. 
+ * В класа да има всички задължителни компоненти - конструктори, 
+ * методи за достъп, метод за извеждане данните на един обект.
+ * Всичко разработено да се приложи и тества.
+ */
 namespace EncapsulationOOP
 {
     class Program
@@ -13,12 +22,65 @@ namespace EncapsulationOOP
                 Console.WriteLine("The Fastets Car Is {0} {1}", 
                     car2.Brand, car2.Model);
         }
-
         static double DistanceBetweenPoints(Point first, Point second)
         {
             return Math.Sqrt(Math.Pow(first.X - second.X, 2) + Math.Pow(first.Y - second.Y, 2));
         }
-
+        static void InputStudentsData(Student[] students)
+        {
+            for (int i = 0; i < students.Length; i++)
+            {
+                Console.Write("Enter name: ");
+                students[i].Name = Console.ReadLine();
+                Console.Write("Enter grade: ");
+                students[i].Grade = Console.ReadLine();
+                Console.Write("Enter marks: ");
+                students[i].Marks = double.Parse(Console.ReadLine());
+            }
+        }
+        static Student MaxMarkStudent(Student[] students)
+        {
+            Student maxStudent = new Student();
+            double max = 2;
+            for (int i = 0; i < students.Length; i++)
+            {
+                if(students[i].Marks > max)
+                {
+                    max = students[i].Marks;
+                    maxStudent = students[i];
+                }
+            }
+            return maxStudent;
+        }
+        static Student MinMarkStudent(Student[] students)
+        {
+            Student minStudent = new Student();
+            double min = 6;
+            for (int i = 0; i < students.Length; i++)
+            {
+                if (students[i].Marks < min)
+                {
+                    min = students[i].Marks;
+                    minStudent = students[i];
+                }
+            }
+            return minStudent;
+        }
+        static void SortStudents(Student[]students)
+        {
+            for (int i = 0; i < students.Length; i++)
+            {
+                for (int j = 0; j < students.Length - 1; j++)
+                {
+                    if (students[j].Marks < students[j + 1].Marks)
+                    {
+                        Student temp = students[j];
+                        students[j] = students[j + 1];
+                        students[j + 1] = temp;
+                    }
+                }
+            }
+        }
         static void Main(string[] args)
         {
             #region 9a
@@ -107,6 +169,39 @@ namespace EncapsulationOOP
 
             //Console.WriteLine();
             #endregion
+
+            #region Student
+
+            Student student1 = new Student("Mariana Hristozkova", "101A", 3.67);
+            student1.DisplayStudent();
+            Console.WriteLine(student1.ToString());
+
+            Student[] students = new Student[3];
+
+            for (int i = 0; i < students.Length; i++)
+            {
+                students[i] = new Student();
+            }
+
+            InputStudentsData(students);
+
+            foreach (var item in students)
+            {
+                item.DisplayStudent();
+            }
+
+            Console.WriteLine("Max marks student: {0}",MaxMarkStudent(students).ToString());
+            Console.WriteLine("Min marks student: {0}", MinMarkStudent(students).ToString());
+
+            SortStudents(students);
+            Console.WriteLine("After sorting:");
+
+            foreach (var item in students)
+            {
+                item.DisplayStudent();
+            }
+            #endregion
+
             #endregion
             #region 9b
             #region Triangle
@@ -174,32 +269,44 @@ namespace EncapsulationOOP
             //}
             #endregion
             #region Point
-            Random r = new Random();
-            Point[] points = new Point[10];
-            for (int i = 0; i < points.Length; i++)
-            {
-                points[i] = new Point(r.Next(-20, 20) + r.NextDouble(), r.Next(-20, 20) + r.NextDouble());
-            }
-            for (int i = 0; i < points.Length; i++)
-            {
-                Console.WriteLine("points[{0}] coordinates: ({1}, {2})", i, Math.Round(points[i].X, 2), Math.Round(points[i].Y, 2));
-            }
+            //Random r = new Random();
+            //Point[] points = new Point[10];
+            //for (int i = 0; i < points.Length; i++)
+            //{
+            //    points[i] = new Point(r.Next(-20, 20) + r.NextDouble(), r.Next(-20, 20) + r.NextDouble());
+            //}
+            //for (int i = 0; i < points.Length; i++)
+            //{
+            //    Console.WriteLine("points[{0}] coordinates: ({1}, {2})", i, Math.Round(points[i].X, 2), Math.Round(points[i].Y, 2));
+            //}
 
-            double min = DistanceBetweenPoints(points[0], points[1]);
-            for (int i = 0; i < points.Length - 1; i++)
-            {
-                for (int j = i + 1; j < points.Length; j++)
-                {
-                    if (DistanceBetweenPoints(points[i], points[j]) < min)
-                        min = DistanceBetweenPoints(points[i], points[j]);
-                }
-            }
-            Console.WriteLine("Minimum distance: {0}", Math.Round(min, 2));
-            Point A = new Point(5, 4);
-            Point B = new Point(-3, 3);
-            Console.WriteLine(A.DistanceToPoint(B));
-            Console.WriteLine(B.DistanceToPoint(A));
+            //double min = DistanceBetweenPoints(points[0], points[1]);
+            //for (int i = 0; i < points.Length - 1; i++)
+            //{
+            //    for (int j = i + 1; j < points.Length; j++)
+            //    {
+            //        if (DistanceBetweenPoints(points[i], points[j]) < min)
+            //            min = DistanceBetweenPoints(points[i], points[j]);
+            //    }
+            //}
+            //Console.WriteLine("Minimum distance: {0}", Math.Round(min, 2));
+            //Point A = new Point(5, 4);
+            //Point B = new Point(-3, 3);
+            //Console.WriteLine(A.DistanceToPoint(B));
+            //Console.WriteLine(B.DistanceToPoint(A));
 
+            #endregion
+            #region Student
+            //Student student1 = new Student("Mariana Hristozkova", "101A", 3.67);
+            //student1.DisplayStudent();
+            //Console.WriteLine(student1.ToString());
+
+            //Student[] students = new Student[3];
+            //for (int i = 0; i < students.Length; i++)
+            //{
+            //    students[i] = new Student();
+            //}
+            //InputStudentsData(students);
             #endregion
             #endregion
 
