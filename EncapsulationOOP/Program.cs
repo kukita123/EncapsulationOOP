@@ -40,17 +40,17 @@ namespace EncapsulationOOP
         }
         static Student MaxMarkStudent(Student[] students)
         {
-            Student maxStudent = new Student();
-            double max = 2;
+            Student maxMarkStudent = new Student();
+            double maxMark = 2;
             for (int i = 0; i < students.Length; i++)
             {
-                if(students[i].Marks > max)
+                if (students[i].Marks > maxMark)
                 {
-                    max = students[i].Marks;
-                    maxStudent = students[i];
-                }
+                    maxMarkStudent = students[i];
+                    maxMark = students[i].Marks;
+                }                    
             }
-            return maxStudent;
+            return maxMarkStudent;
         }
         static Student MinMarkStudent(Student[] students)
         {
@@ -172,34 +172,34 @@ namespace EncapsulationOOP
 
             #region Student
 
-            Student student1 = new Student("Mariana Hristozkova", "101A", 3.67);
-            student1.DisplayStudent();
-            Console.WriteLine(student1.ToString());
+            //Student student1 = new Student("Mariana Hristozkova", "101A", 3.67);
+            //student1.DisplayStudent();
+            //Console.WriteLine(student1.ToString());
 
-            Student[] students = new Student[3];
+            //Student[] students = new Student[3];
 
-            for (int i = 0; i < students.Length; i++)
-            {
-                students[i] = new Student();
-            }
+            //for (int i = 0; i < students.Length; i++)
+            //{
+            //    students[i] = new Student();
+            //}
 
-            InputStudentsData(students);
+            //InputStudentsData(students);
 
-            foreach (var item in students)
-            {
-                item.DisplayStudent();
-            }
+            //foreach (var item in students)
+            //{
+            //    item.DisplayStudent();
+            //}
 
-            Console.WriteLine("Max marks student: {0}",MaxMarkStudent(students).ToString());
-            Console.WriteLine("Min marks student: {0}", MinMarkStudent(students).ToString());
+            //Console.WriteLine("Max marks student: {0}",MaxMarkStudent(students).ToString());
+            //Console.WriteLine("Min marks student: {0}", MinMarkStudent(students).ToString());
 
-            SortStudents(students);
-            Console.WriteLine("After sorting:");
+            //SortStudents(students);
+            //Console.WriteLine("After sorting:");
 
-            foreach (var item in students)
-            {
-                item.DisplayStudent();
-            }
+            //foreach (var item in students)
+            //{
+            //    item.DisplayStudent();
+            //}
             #endregion
 
             #endregion
@@ -297,16 +297,27 @@ namespace EncapsulationOOP
 
             #endregion
             #region Student
-            //Student student1 = new Student("Mariana Hristozkova", "101A", 3.67);
-            //student1.DisplayStudent();
-            //Console.WriteLine(student1.ToString());
+            Student student1 = new Student("Mariana Hristozkova", "101A", 3.67);
+            student1.DisplayStudent();
+            Console.WriteLine(student1.ToString());
 
-            //Student[] students = new Student[3];
-            //for (int i = 0; i < students.Length; i++)
-            //{
-            //    students[i] = new Student();
-            //}
-            //InputStudentsData(students);
+            Student[] students = new Student[3];
+            for (int i = 0; i < students.Length; i++)
+            {
+                students[i] = new Student();
+            }
+
+            InputStudentsData(students);
+
+            Console.WriteLine(MaxMarkStudent(students).ToString());
+            MinMarkStudent(students).DisplayStudent();
+
+            SortStudents(students);
+            Console.WriteLine("Sorted array:");
+            for (int i = 0; i < students.Length; i++)
+            {
+                Console.WriteLine(students[i].ToString());
+            }
             #endregion
             #endregion
 

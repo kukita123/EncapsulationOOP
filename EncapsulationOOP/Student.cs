@@ -60,12 +60,12 @@ namespace EncapsulationOOP
         {
             Console.WriteLine(" Student's name: {0}", this.Name);
             Console.WriteLine(" Student's grade: {0}", this.Grade);
-            Console.WriteLine(" Student's name: {0}", this.Marks);
+            Console.WriteLine(" Student's marks: {0}", this.Marks);
         }
-         public string ToString()
+        public string ToString()
         {
-            return " Student's name: " +this.Name + 
-                ", student's grade: " +this.Grade + 
+            return " Student's name: " + this.Name +
+                ", student's grade: " + this.Grade +
                 ", student's marks: " + this.Marks;
         }
     }
